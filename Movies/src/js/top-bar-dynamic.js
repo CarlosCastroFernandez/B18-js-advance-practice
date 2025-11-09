@@ -3,13 +3,14 @@ import { createCardGrid } from "./movie-card-grid";
 import { createCardList } from "./movie-card-list";
 
 export function createDynamicBar(movies) {
-    let pasada=true;
-    if (sessionStorage.getItem("select")===null){
-        sessionStorage.setItem("select","Proxmamente");
-        pasada=false;
-    }
   let cardGrid;
   let cardList;
+  let pasada = true;
+  if (sessionStorage.getItem("select") === null) {
+    sessionStorage.setItem("select", "Proxmamente");
+    pasada = false;
+  }
+
   if (
     document.body.querySelector(".select") !== null &&
     document.body.querySelector(".divContainerImg") !== null
@@ -75,16 +76,20 @@ function createSelect() {
   let option4 = document.createElement("option");
   option1.setAttribute("value", "Proximamente");
   option1.textContent = "Proximamente";
-  option1.selected=sessionStorage.getItem("select")==="Proximamente"?true:false;
+  option1.selected =
+    sessionStorage.getItem("select") === "Proximamente" ? true : false;
   option2.setAttribute("value", "Populares");
   option2.textContent = "Populares";
-  option2.selected=sessionStorage.getItem("select")==="Populares"?true:false;
+  option2.selected =
+    sessionStorage.getItem("select") === "Populares" ? true : false;
   option3.setAttribute("value", "Mas Valoradas");
-  option3.selected=sessionStorage.getItem("select")==="Mas Valoradas"?true:false;
+  option3.selected =
+    sessionStorage.getItem("select") === "Mas Valoradas" ? true : false;
   option3.textContent = "Mas Valoradas";
   option4.setAttribute("value", "En cartelera");
   option4.textContent = "En cartelera";
-  option4.selected=sessionStorage.getItem("select")==="En cartelera"?true:false;
+  option4.selected =
+    sessionStorage.getItem("select") === "En cartelera" ? true : false;
 
   select.appendChild(option1);
   select.appendChild(option2);
@@ -103,27 +108,27 @@ function createSelect() {
     switch (select.value) {
       case "Proximamente":
         movies = await allMoviesByPage(1, "upcoming");
-        sessionStorage.setItem("select","Proximamente")
+        sessionStorage.setItem("select", "Proximamente");
         createDynamicBar(movies);
-       
+
         break;
       case "Populares":
         movies = await allMoviesByPage(1, "popular");
-        sessionStorage.setItem("select","Populares")
+        sessionStorage.setItem("select", "Populares");
         createDynamicBar(movies);
-          
+
         break;
       case "Mas Valoradas":
         movies = await allMoviesByPage(1, "top_rated");
-          sessionStorage.setItem("select","Mas Valoradas")
+        sessionStorage.setItem("select", "Mas Valoradas");
         createDynamicBar(movies);
-      
+
         break;
       case "En cartelera":
         movies = await allMoviesByPage(1, "now_playing");
-        sessionStorage.setItem("select","En cartelera")
+        sessionStorage.setItem("select", "En cartelera");
         createDynamicBar(movies);
-        
+
         break;
     }
   });

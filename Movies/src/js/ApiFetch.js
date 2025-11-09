@@ -1,4 +1,4 @@
-export async function allMoviesByPage(numPage,select="upcoming") {
+export async function allMoviesByPage(numPage, select = "upcoming") {
   const options = {
     method: "GET",
     headers: {
@@ -9,7 +9,9 @@ export async function allMoviesByPage(numPage,select="upcoming") {
   };
   try {
     let response = await fetch(
-      "https://api.themoviedb.org/3/movie/"+select+"?language=en-US&page=" +
+      "https://api.themoviedb.org/3/movie/" +
+        select +
+        "?language=en-US&page=" +
         numPage,
       options
     );

@@ -1,55 +1,60 @@
+import { createHeaderForDetails, createMainDetails } from "./top-bar-details";
 
-export function createCardGrid(movies){
+export function createCardGrid(movies) {
+  let main = document.getElementById("app");
+  let sectionMain = document.createElement("section");
+  sectionMain.className = "section-main";
 
-    let main=document.getElementById("app");
-    let sectionMain=document.createElement("section");
-    sectionMain.className="section-main"
-    
-
-    for (let value of movies){
-        sectionMain.appendChild(createDivCard(value,sectionMain,main));
-    }
-    main.appendChild(sectionMain);
-    return sectionMain;
+  for (let value of movies) {
+    sectionMain.appendChild(createDivCard(value, sectionMain, main));
+  }
+  main.appendChild(sectionMain);
+  return sectionMain;
 }
 
-function createDivCard(value,sectionMain,main){
-    let divCard= document.createElement("div");
-    divCard.className="movie-card";
-    divCard.appendChild(createDivImg(value,sectionMain,main));
-    divCard.appendChild(createTitle(value));
-    divCard.appendChild(createValoration(value));
-    divCard.appendChild(createDescription(value));
-    return  divCard;
+function createDivCard(value, sectionMain, main) {
+  let divCard = document.createElement("div");
+  divCard.className = "movie-card";
+  divCard.appendChild(createDivImg(value, sectionMain, main));
+  divCard.appendChild(createTitle(value));
+  divCard.appendChild(createValoration(value));
+  divCard.appendChild(createDescription(value));
+  return divCard;
 }
-function createDivImg(value,sectionMain,main){
-    let divImg=document.createElement("div");
-    divImg.className="containerM-img"
-    let img =document.createElement("img");
-    img.className="post-movie"
-    img.setAttribute("src","https://image.tmdb.org/t/p/w300/"+value.poster_path)
-    divImg.appendChild(img);
-    img.addEventListener("click",(e)=>{
-        main.removeChild(sectionMain);
-    })
-    return divImg;
-}
-
-function createTitle(value){
-    let title=document.createElement("h2");
-    title.className="title-movie";
-    title.textContent=value.title;
-    return title;
-}
-function createValoration(value){
-    let valoration=document.createElement("p");
-    valoration.textContent="Valoracion "+value.vote_average;
-    return valoration;
+function createDivImg(value, sectionMain, main) {
+  let divImg = document.createElement("div");
+  divImg.className = "containerM-img";
+  let img = document.createElement("img");
+  img.className = "post-movie";
+  img.setAttribute(
+    "src",
+    "https://image.tmdb.org/t/p/w300/" + value.poster_path
+  );
+  divImg.appendChild(img);
+  img.addEventListener("click", (e) => {
+    main.removeChild(sectionMain);
+    document.body.querySelector(".section-header2").remove()
+     document.body.querySelector("header").appendChild(createHeaderForDetails())
+      main.appendChild(createMainDetails(value));
+  });
+  return divImg;
 }
 
-function createDescription(value){
-    let description=document.createElement("p");
-    description.className="movie-overview";
-    description.textContent=value.overview;
-    return description;
+function createTitle(value) {
+  let title = document.createElement("h2");
+  title.className = "title-movie";
+  title.textContent = value.title;
+  return title;
+}
+function createValoration(value) {
+  let valoration = document.createElement("p");
+  valoration.textContent = "Valoracion " + value.vote_average;
+  return valoration;
+}
+
+function createDescription(value) {
+  let description = document.createElement("p");
+  description.className = "movie-overview";
+  description.textContent = value.overview;
+  return description;
 }

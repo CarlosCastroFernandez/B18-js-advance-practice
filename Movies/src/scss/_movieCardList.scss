@@ -11,7 +11,7 @@
   padding: 30px;
   .movie-card-list {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 150px 1fr;
     
     .containerM-img {
       width: 130px;
@@ -25,8 +25,15 @@
     .div-container-info {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
+      justify-content: space-evenly;
+      align-items:flex-start;
+      .div-parte1{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100px;
+      }
       .movie-overview {
         margin: 6px 0 30px;
         line-height: 1.5;
