@@ -1,0 +1,40 @@
+@use "./variables";
+@use "./mixins/mixin";
+header {
+  .section-header1 {
+    background-color: variables.$colorFondo;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+
+      a {
+        color: variables.$colorLetra;
+        text-decoration: none;
+      }
+    }
+    .container-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      input {
+        padding: 10px;
+        border-radius: 10px;
+      }
+      button {
+        @include mixin.createButton(variables.$colorButton);
+      }
+    }
+  }
+  .section-header2 {
+    background-color: variables.$colorFondo2;
+    padding: 20px;
+  }
+}
