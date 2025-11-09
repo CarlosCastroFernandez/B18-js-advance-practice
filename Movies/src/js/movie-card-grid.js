@@ -1,24 +1,26 @@
-export function createCard(movies){
+export function createCardGrid(movies){
     let main=document.getElementById("app");
     let sectionMain=document.createElement("section");
     sectionMain.className="section-main"
+    
 
     for (let value of movies){
-        sectionMain.appendChild(createDivCard(value));
+        sectionMain.appendChild(createDivCard(value,sectionMain,main));
     }
     main.appendChild(sectionMain);
+    return sectionMain;
 }
 
-function createDivCard(value){
+function createDivCard(value,sectionMain,main){
     let divCard= document.createElement("div");
     divCard.className="movie-card";
-    divCard.appendChild(createDivImg(value));
+    divCard.appendChild(createDivImg(value,sectionMain,main));
     divCard.appendChild(createTitle(value));
     divCard.appendChild(createValoration(value));
     divCard.appendChild(createDescription(value));
     return  divCard;
 }
-function createDivImg(value){
+function createDivImg(value,sectionMain,main){
     let divImg=document.createElement("div");
     divImg.className="containerM-img"
     let img =document.createElement("img");
@@ -26,7 +28,7 @@ function createDivImg(value){
     img.setAttribute("src","https://image.tmdb.org/t/p/w300/"+value.poster_path)
     divImg.appendChild(img);
     img.addEventListener("click",(e)=>{
-        console.log(value);
+        main.removeChild(sectionMain);
     })
     return divImg;
 }

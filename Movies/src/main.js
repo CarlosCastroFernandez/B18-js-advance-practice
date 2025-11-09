@@ -1,6 +1,7 @@
 import "./scss/style.scss";
 import { allMoviesByPage } from "./js/ApiFetch";
-import { createCard } from "./js/MovieCard";
+import {createDynamicBar} from "./js/top-bar-dynamic"
+
 
 let movies=await allMoviesByPage(1);
-createCard(movies);
+createDynamicBar(movies);

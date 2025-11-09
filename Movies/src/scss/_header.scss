@@ -36,5 +36,14 @@ header {
   .section-header2 {
     background-color: variables.$colorFondo2;
     padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    select{
+        width: 300px;
+        padding: 10px;
+        border-radius: 10px;
+    }
   }
 }
