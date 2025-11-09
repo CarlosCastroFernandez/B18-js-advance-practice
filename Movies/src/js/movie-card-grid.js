@@ -1,4 +1,6 @@
+
 export function createCardGrid(movies){
+
     let main=document.getElementById("app");
     let sectionMain=document.createElement("section");
     sectionMain.className="section-main"
