@@ -5,7 +5,7 @@ export function createCast(cast) {
   divContainerReparto.className="div-global-reparto"
   console.log("CASTTT "+cast);
   let divContainer;
-  for (let value of cast.slice(0,8)) {
+  for (let value of cast) {
     console.log("CASTIG "+value);
     divContainer = document.createElement("div");
     divContainer.className = "div-container-reparto";

@@ -3,6 +3,7 @@
   background-color: black;
   border-radius: 10px;
   color: variables.$colorLetra;
+  padding-bottom: 40px;
   .section-details {
     padding-top: 30px;
     .div-details-principal {
@@ -30,22 +31,29 @@
 }
 
 .section-reparto {
-display: flex;
-justify-content: center;
-align-items: center;
+
   padding: 50px;
+      overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ff8000 transparent;
+    scroll-behavior: smooth;
+    height: 330px;
+
   .div-global-reparto {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: nowrap;
+    
     gap: 20px;
 
     .div-container-reparto {
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
       width: 130px;
       .img-reparto {
         display: block;
