@@ -48,20 +48,24 @@ function createDivImg(movies, cardGrid, cardList) {
   divImg.appendChild(imgList);
 
   imgGrid.addEventListener("click", (e) => {
-    sessionStorage.setItem("option", "grid");
-    if (typeof cardList !== undefined) {
-      cardList.remove();
+    if (sessionStorage.getItem("option") !== "grid") {
+      sessionStorage.setItem("option", "grid");
+      if (typeof cardList !== undefined) {
+        cardList.remove();
+      }
+      cardGrid = createCardGrid(movies);
     }
-    cardGrid = createCardGrid(movies);
   });
   imgList.addEventListener("click", (e) => {
-    sessionStorage.setItem("option", "list");
-    console.log("ENtro");
-    if (typeof cardGrid !== undefined) {
-      cardGrid.remove();
+    if (sessionStorage.getItem("option") !== "list") {
+      sessionStorage.setItem("option", "list");
+      console.log("ENtro");
+      if (typeof cardGrid !== undefined) {
+        cardGrid.remove();
+      }
+      //falta el cardList
+      cardList = createCardList(movies);
     }
-    //falta el cardList
-    cardList = createCardList(movies);
   });
 
   return divImg;

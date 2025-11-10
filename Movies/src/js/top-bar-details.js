@@ -1,3 +1,6 @@
+import { allMoviesByPage } from "./ApiFetch";
+import { createCast } from "./cast-details";
+
 export function createHeaderForDetails(){
 
     let sectionHeader=document.createElement("section");
@@ -8,11 +11,13 @@ export function createHeaderForDetails(){
     return sectionHeader;
 }
 
-export function createMainDetails(movie){
+export async function createMainDetails(movie){
     let sectionMain=document.createElement("section");
     sectionMain.className="section-details";
     sectionMain.appendChild(createDivPrincipal(movie));
-    return sectionMain;
+    let cast=createCast(await allMoviesByPage(movie.id,null,2));
+    let lista=[sectionMain,cast];
+    return lista;
 }
 
 function createDivPrincipal(movie){
@@ -22,26 +27,23 @@ function createDivPrincipal(movie){
     div.style.backgroundSize = "cover";
     div.style.backgroundPosition = "center";
     div.style.backgroundRepeat = "no-repeat";
-    div.appendChild(createDivContainer(movie))
-    return div;
-}
-function createDivContainer(movie){
-    let divContainerDetails=document.createElement("div");
-    divContainerDetails.className="div-details-second"
     let img=document.createElement("img")
     img.className="detail-img";
     img.setAttribute("src","https://image.tmdb.org/t/p/w300/"+movie.poster_path)
-    divContainerDetails.appendChild(img)
-    divContainerDetails.appendChild(createDivDetailsInfo(movie))
-    divContainerDetails.appendChild(createDescription(movie))
-    return divContainerDetails;
+    div.appendChild(img)
+    div.appendChild(createDivDetailsInfo(movie))
+  
+
+    return div;
 }
+
 
 function createDivDetailsInfo(movie){
     let divContainerDetailsInfo=document.createElement("div");
     divContainerDetailsInfo.className="div-details-second-info";
     divContainerDetailsInfo.appendChild(createTitleAndValoration(movie)[0]);
     divContainerDetailsInfo.appendChild(createTitleAndValoration(movie)[1]);
+    divContainerDetailsInfo.appendChild(createDescription(movie))
     return divContainerDetailsInfo;
 }
 
@@ -49,7 +51,7 @@ function createTitleAndValoration(movie){
     let title=document.createElement("h1");
     let valoration=document.createElement("p");
     title.textContent=movie.title;
-    valoration.textContent="Valoration "+movie.vote_average;
+    valoration.textContent="Valoration "+movie.votos;
     let lista=[];
     lista.push(title)
     lista.push(valoration);
@@ -58,6 +60,6 @@ function createTitleAndValoration(movie){
 function createDescription(movie){
     let description=document.createElement("p");
     description.className="description-overview";
-    description.textContent=movie.overview;
+    description.textContent=movie.sinopsis;
     return description;
 }

@@ -1,4 +1,23 @@
-export async function allMoviesByPage(numPage, select = "upcoming") {
+export async function allMoviesByPage(
+  numPage,
+  select = "upcoming",
+  urlCredits = 0
+) {
+  let url;
+  if (urlCredits === 0) {
+    url =
+      "https://api.themoviedb.org/3/movie/" +
+      select +
+      "?language=es-EU&page=" +
+      numPage;
+  } else if (urlCredits === 1) {
+    url = "https://api.themoviedb.org/3/movie/" + numPage + "?language=es-EU";
+  } else {
+    url =
+      "https://api.themoviedb.org/3/movie/" +
+      numPage +
+      "/credits?language=es-EU";
+  }
   const options = {
     method: "GET",
     headers: {
@@ -8,19 +27,29 @@ export async function allMoviesByPage(numPage, select = "upcoming") {
     },
   };
   try {
-    let response = await fetch(
-      "https://api.themoviedb.org/3/movie/" +
-        select +
-        "?language=en-US&page=" +
-        numPage,
-      options
-    );
+    let response = await fetch(url, options);
 
     if (!response.ok) {
       throw new Error("Error con código " + response.status);
     }
     let data = await response.json();
-    let results = data.results;
+    let dataDetails;
+    if (urlCredits === 1) {
+      dataDetails = {
+        id:data.id,
+        title: data.original_title,
+        votos: data.vote_average,
+        sinopsis: data.overview,
+        poster_path:data.poster_path
+      };
+    }
+
+    let results =await
+      (urlCredits === 0
+        ?  data.results
+        : urlCredits === 1
+        ?  dataDetails
+        :  data.cast);
     if (localStorage.getItem("movies") === null) {
       localStorage.setItem("movies", JSON.stringify(results));
     }

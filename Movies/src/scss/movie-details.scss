@@ -1,16 +1,15 @@
 @use "./variables";
-.section-details {
+#app {
   background-color: black;
   border-radius: 10px;
   color: variables.$colorLetra;
-  padding:30px 0px 200px 0px;
-
-  .div-details-principal {
-    padding: 50px;
-    
-    .div-details-second {
+  .section-details {
+    padding-top: 30px;
+    .div-details-principal {
+      padding: 50px;
       display: grid;
       grid-template-columns: 400px 1fr;
+
       .div-details-second-info {
         display: flex;
         flex-direction: column;
@@ -25,6 +24,35 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.section-reparto {
+display: flex;
+justify-content: center;
+align-items: center;
+  padding: 50px;
+  .div-global-reparto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+
+    .div-container-reparto {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 130px;
+      .img-reparto {
+        display: block;
+        width: 100px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
       }
     }
   }

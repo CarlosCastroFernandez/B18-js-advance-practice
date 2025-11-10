@@ -6,12 +6,15 @@
   padding: 60px;
   gap: 30px;
   border-radius: 10px;
+
+
   .movie-card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     color: variables.$colorLetra;
+    width: 350px;
 
     .movie-overview {
       margin: 6px 0 30px;
@@ -36,8 +39,13 @@
       font-size: 1.2rem;
       font-weight: bold;
       text-align: center;
-      white-space: nowrap; 
+        display: -webkit-box;
+      white-space: wrap; 
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+       text-overflow: ellipsis;
       overflow: hidden; 
+  
     }
   }
 }

@@ -1,6 +1,6 @@
 import { createHeaderForDetails, createMainDetails } from "./top-bar-details";
 
-createHeaderForDetails
+createHeaderForDetails;
 export function createCardList(movies) {
   let main = document.getElementById("app");
   let sectionMain = document.createElement("section");
@@ -28,11 +28,13 @@ function createDivImg(value, sectionMain, main) {
     "https://image.tmdb.org/t/p/w300/" + value.poster_path
   );
   divImg.appendChild(img);
-  img.addEventListener("click", (e) => {
+  img.addEventListener("click", async (e) => {
     main.removeChild(sectionMain);
-    document.body.querySelector(".section-header2").remove()
-    document.body.querySelector("header").appendChild(createHeaderForDetails())
-    main.appendChild(createMainDetails(value));
+    document.body.querySelector(".section-header2").remove();
+    document.body.querySelector("header").appendChild(createHeaderForDetails());
+    let result = await createMainDetails(await allMoviesByPage(value.id, null, 1));
+    main.appendChild(result[0]);
+    main.appendChild(result[1]);
   });
   return divImg;
 }
@@ -43,12 +45,12 @@ function containerDiv(value) {
   divContainer.appendChild(createDescription(value));
   return divContainer;
 }
-function divTitleAndValoration(value){
-    let divContainer = document.createElement("div");
-    divContainer.className="div-parte1";
-    divContainer.appendChild(createTitle(value));
-     divContainer.appendChild(createValoration(value));
-     return divContainer;
+function divTitleAndValoration(value) {
+  let divContainer = document.createElement("div");
+  divContainer.className = "div-parte1";
+  divContainer.appendChild(createTitle(value));
+  divContainer.appendChild(createValoration(value));
+  return divContainer;
 }
 function createTitle(value) {
   let title = document.createElement("h2");

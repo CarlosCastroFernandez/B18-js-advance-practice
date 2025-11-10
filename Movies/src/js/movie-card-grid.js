@@ -1,10 +1,11 @@
+import { allMoviesByPage } from "./ApiFetch";
 import { createHeaderForDetails, createMainDetails } from "./top-bar-details";
 
 export function createCardGrid(movies) {
   let main = document.getElementById("app");
   let sectionMain = document.createElement("section");
   sectionMain.className = "section-main";
-
+    console.log(movies);
   for (let value of movies) {
     sectionMain.appendChild(createDivCard(value, sectionMain, main));
   }
@@ -31,11 +32,14 @@ function createDivImg(value, sectionMain, main) {
     "https://image.tmdb.org/t/p/w300/" + value.poster_path
   );
   divImg.appendChild(img);
-  img.addEventListener("click", (e) => {
+  img.addEventListener("click", async (e) => {
     main.removeChild(sectionMain);
-    document.body.querySelector(".section-header2").remove()
-     document.body.querySelector("header").appendChild(createHeaderForDetails())
-      main.appendChild(createMainDetails(value));
+    document.body.querySelector(".section-header2").remove();
+    document.body.querySelector("header").appendChild(createHeaderForDetails());
+    let result = await createMainDetails(await allMoviesByPage(value.id, null, 1));
+    console.log("RESULT "+result);
+    main.appendChild(result[0]);
+    main.appendChild(result[1]);
   });
   return divImg;
 }
