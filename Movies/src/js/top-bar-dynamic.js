@@ -27,10 +27,20 @@ export function createDynamicBar(movies) {
   } else {
     cardGrid = createCardGrid(movies);
   }
-  let sectionh2 = document.querySelector(".section-header2");
-  sectionh2.className = "section-header2";
-  sectionh2.appendChild(createSelect(cardGrid, cardList));
-  sectionh2.appendChild(createDivImg(movies, cardGrid, cardList));
+  
+   let sectionh2 = document.createElement("section");
+
+  if (!document.body.querySelector(".section-header2" )) {
+    sectionh2 = document.createElement("section");
+    sectionh2.className = "section-header2";
+    sectionh2.appendChild(createSelect(cardGrid, cardList));
+    sectionh2.appendChild(createDivImg(movies, cardGrid, cardList));
+    document.body.querySelector("header").appendChild(sectionh2);
+  }else{
+   sectionh2= document.querySelector(".section-header2");
+     sectionh2.appendChild(createSelect(cardGrid, cardList));
+    sectionh2.appendChild(createDivImg(movies, cardGrid, cardList));
+  }
 }
 
 function createDivImg(movies, cardGrid, cardList) {
@@ -41,8 +51,10 @@ function createDivImg(movies, cardGrid, cardList) {
   let imgGrid = document.createElement("img");
   imgGrid.setAttribute("src", "src/img/grid-layout.svg");
   imgGrid.style.width = "30px";
+   imgGrid.style.cursor="pointer";
   let imgList = document.createElement("img");
   imgList.style.width = "30px";
+  imgList.style.cursor = "pointer";
   imgList.setAttribute("src", "src/img/list-layout.svg");
   divImg.appendChild(imgGrid);
   divImg.appendChild(imgList);

@@ -31,6 +31,9 @@ function createDivImg(value, sectionMain, main) {
     "src",
     "https://image.tmdb.org/t/p/w300/" + value.poster_path
   );
+  img.onerror = ()=> {
+  this.src = "../img/profile.png"; // 👉 cambia por tu imagen
+};
   divImg.appendChild(img);
   img.addEventListener("click", async (e) => {
     main.removeChild(sectionMain);

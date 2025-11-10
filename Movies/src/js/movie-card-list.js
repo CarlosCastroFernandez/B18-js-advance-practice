@@ -1,6 +1,6 @@
+import { allMoviesByPage } from "./ApiFetch";
 import { createHeaderForDetails, createMainDetails } from "./top-bar-details";
 
-createHeaderForDetails;
 export function createCardList(movies) {
   let main = document.getElementById("app");
   let sectionMain = document.createElement("section");

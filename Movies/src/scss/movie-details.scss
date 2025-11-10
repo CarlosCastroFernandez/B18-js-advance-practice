@@ -3,18 +3,20 @@
   background-color: black;
   border-radius: 10px;
   color: variables.$colorLetra;
-  padding-bottom: 40px;
+  padding-bottom:  40px;
+
   .section-details {
     padding-top: 30px;
     .div-details-principal {
       padding: 50px;
       display: grid;
       grid-template-columns: 400px 1fr;
-
+     
+ 
       .div-details-second-info {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-evenly;
         align-items: flex-start;
       }
       .description-overview {
@@ -31,36 +33,45 @@
 }
 
 .section-reparto {
-
   padding: 50px;
-      overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #ff8000 transparent;
-    scroll-behavior: smooth;
-    height: 330px;
-
-  .div-global-reparto {
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ff8000 transparent;
+  scroll-behavior: smooth;
+  width: 50%;
+  .global-reparto {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
-    flex-wrap: nowrap;
-    
-    gap: 20px;
-
-    .div-container-reparto {
-      flex-shrink: 0;
+    padding-right: 50px;
+    width: 100%;
+                                                                                                                                                                                                                                                                                                                   
+    .div-global-reparto {
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      width: 130px;
-      .img-reparto {
-        display: block;
-        width: 100px;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 10px;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      
+      gap: 20px;
+    
+
+      .div-container-reparto {
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 130px;
+        .img-reparto {
+          display: block;
+          width: 100px;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 10px;
+        }
       }
     }
   }
