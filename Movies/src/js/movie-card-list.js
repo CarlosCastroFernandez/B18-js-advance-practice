@@ -27,12 +27,17 @@ function createDivImg(value, sectionMain, main) {
     "src",
     "https://image.tmdb.org/t/p/w300/" + value.poster_path
   );
+  img.onerror = function () {
+    this.src = "src/img/pelis-notFound.png"; 
+  };
   divImg.appendChild(img);
   img.addEventListener("click", async (e) => {
     main.removeChild(sectionMain);
     document.body.querySelector(".section-header2").remove();
     document.body.querySelector("header").appendChild(createHeaderForDetails());
-    let result = await createMainDetails(await allMoviesByPage(value.id, null, 1));
+    let result = await createMainDetails(
+      await allMoviesByPage(value.id, null, 1)
+    );
     main.appendChild(result[0]);
     main.appendChild(result[1]);
   });

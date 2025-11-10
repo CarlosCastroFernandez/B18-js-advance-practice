@@ -49,6 +49,9 @@ function createDivPrincipal(movie) {
     "src",
     "https://image.tmdb.org/t/p/w300/" + movie.poster_path
   );
+    img.onerror = function() {
+  this.src = "src/img/pelis-notFound.png"; // 👉 cambia por tu imagen
+};
   div.appendChild(img);
   div.appendChild(createDivDetailsInfo(movie));
 
