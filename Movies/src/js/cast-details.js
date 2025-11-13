@@ -1,39 +1,76 @@
 export function createCast(cast) {
   let sectionCast = document.createElement("section");
-  sectionCast.className = "section-reparto";
-  let containerGlobalReparto = document.createElement("div");
-  let titleReparto = document.createElement("h2");
-  titleReparto.textContent = "Reparto";
-  containerGlobalReparto.appendChild(titleReparto);
-  containerGlobalReparto.className = "global-reparto";
-  let divContainerReparto = document.createElement("div");
-  divContainerReparto.className = "div-global-reparto";
-  console.log("CASTTT " + cast);
-  let divContainer;
-  for (let value of cast) {
-    console.log("CASTIG " + value);
-    divContainer = document.createElement("div");
-    divContainer.className = "div-container-reparto";
+  sectionCast.className = "section-team";
+
+  sectionCast.appendChild(createDivContainerCast(cast.cast));
+  sectionCast.appendChild(createDivContainerTechnique(cast.crew));
+
+  return sectionCast;
+}
+
+function createDivContainerCast(casts) {
+  let containerDivCast = document.createElement("div");
+  containerDivCast.className = "container-div-cast";
+  let repartoTitle = document.createElement("h2");
+  repartoTitle.textContent = "REPARTO";
+  repartoTitle.style.margin = "30px";
+  let containerCast = document.createElement("div");
+  containerCast.className = "container-last-cast";
+  for (let value of casts) {
+    let divCard = document.createElement("div");
     let img = document.createElement("img");
-    img.className = "img-reparto";
+    img.className = "img-team";
     img.setAttribute(
       "src",
       "https://image.tmdb.org/t/p/w300/" + value.profile_path
     );
     img.onerror = function () {
-      this.src = "src/img/profile.png"; 
+      this.src = "src/img/profile.png";
     };
-    let name = document.createElement("h5");
-    name.textContent = value.name;
+    let titleName = document.createElement("h5");
+    titleName.textContent = value.name;
     let character = document.createElement("p");
     character.textContent = value.character;
-    divContainer.appendChild(img);
-    divContainer.appendChild(name);
-    divContainer.appendChild(character);
-    divContainerReparto.appendChild(divContainer);
+    divCard.appendChild(img);
+    divCard.appendChild(titleName);
+    divCard.appendChild(character);
+    containerCast.appendChild(divCard);
   }
-  containerGlobalReparto.appendChild(divContainerReparto);
+  containerDivCast.appendChild(repartoTitle);
 
-  sectionCast.appendChild(containerGlobalReparto);
-  return sectionCast;
+  containerDivCast.appendChild(containerCast);
+  return containerDivCast;
+}
+function createDivContainerTechnique(casts) {
+  let containerDivCast = document.createElement("div");
+  containerDivCast.className = "container-div-cast";
+  let repartoTitle = document.createElement("h2");
+  repartoTitle.textContent = "EQUIPO TÉCNICO";
+  repartoTitle.style.margin = "30px";
+  let containerCast = document.createElement("div");
+  containerCast.className = "container-last-cast";
+  for (let value of casts) {
+    let divCard = document.createElement("div");
+    let img = document.createElement("img");
+    img.className = "img-team";
+    img.setAttribute(
+      "src",
+      "https://image.tmdb.org/t/p/w300/" + value.profile_path
+    );
+    img.onerror = function () {
+      this.src = "src/img/profile.png";
+    };
+    let titleName = document.createElement("h5");
+    titleName.textContent = value.name;
+    let character = document.createElement("p");
+    character.textContent = value.character;
+    divCard.appendChild(img);
+    divCard.appendChild(titleName);
+    divCard.appendChild(character);
+    containerCast.appendChild(divCard);
+  }
+  containerDivCast.appendChild(repartoTitle);
+
+  containerDivCast.appendChild(containerCast);
+  return containerDivCast;
 }

@@ -1,16 +1,14 @@
 import { allMoviesByPage } from "./ApiFetch";
 import { createCast } from "./cast-details";
-import { createCardGrid } from "./movie-card-grid";
-import { createCardList } from "./movie-card-list";
 import { createDynamicBar } from "./top-bar-dynamic";
 
 export function createHeaderForDetails() {
-    let sectionHeader;
-    let img;
+  let sectionHeader;
+  let img;
   if (!document.body.querySelector(".section-header3")) {
-     sectionHeader = document.createElement("section");
+    sectionHeader = document.createElement("section");
     sectionHeader.className = "section-header3";
-     img = document.createElement("img");
+    img = document.createElement("img");
     img.setAttribute("src", "src/img/left-arrow.svg");
     img.style.cursor = "pointer";
     sectionHeader.appendChild(img);
@@ -49,9 +47,9 @@ function createDivPrincipal(movie) {
     "src",
     "https://image.tmdb.org/t/p/w300/" + movie.poster_path
   );
-    img.onerror = function() {
-  this.src = "src/img/pelis-notFound.png"; // 👉 cambia por tu imagen
-};
+  img.onerror = function () {
+    this.src = "src/img/pelis-notFound.png"; // 👉 cambia por tu imagen
+  };
   div.appendChild(img);
   div.appendChild(createDivDetailsInfo(movie));
 

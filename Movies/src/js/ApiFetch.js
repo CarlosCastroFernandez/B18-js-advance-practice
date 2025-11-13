@@ -12,13 +12,16 @@ export async function allMoviesByPage(
       numPage;
   } else if (urlCredits === 1) {
     url = "https://api.themoviedb.org/3/movie/" + numPage + "?language=es-EU";
-  } else if (urlCredits ===2){
+  } else if (urlCredits === 2) {
     url =
       "https://api.themoviedb.org/3/movie/" +
       numPage +
       "/credits?language=es-EU";
-  }else if(urlCredits===3){
-    url="https://api.themoviedb.org/3/search/movie?query="+numPage+"&include_adult=false&language=en-US&page=1";
+  } else if (urlCredits === 3) {
+    url =
+      "https://api.themoviedb.org/3/search/movie?query=" +
+      numPage +
+      "&include_adult=false&language=en-US&page=1";
   }
   const options = {
     method: "GET",
@@ -38,17 +41,25 @@ export async function allMoviesByPage(
     let dataDetails;
     if (urlCredits === 1) {
       dataDetails = {
-        id:data.id,
+        id: data.id,
         title: data.original_title,
         votos: data.vote_average,
         sinopsis: data.overview,
-        poster_path:data.poster_path
+        poster_path: data.poster_path,
       };
     }
-
-    let results =await
-      (urlCredits === 0?  data.results: urlCredits === 1?  dataDetails: urlCredits===2? data.cast:data.results);
-    if (localStorage.getItem("movies") !== null&&(url.includes(select)||urlCredits===3)) {
+    let mapa = new Map();
+    let results = await (urlCredits === 0
+      ? data.results
+      : urlCredits === 1
+      ? dataDetails
+      : urlCredits === 2
+      ? data
+      : data.results);
+    if (
+      localStorage.getItem("movies") !== null &&
+      (url.includes(select) || urlCredits === 3)
+    ) {
       localStorage.setItem("movies", JSON.stringify(results));
     }
     return results;

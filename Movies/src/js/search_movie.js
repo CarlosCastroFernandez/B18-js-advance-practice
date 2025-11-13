@@ -16,8 +16,9 @@ export function searchMovie() {
       createDynamicBar(await allMoviesByPage(lista[0].value, null, 3));
     } else {
       document.body.querySelector(".section-details").remove();
-      document.body.querySelector(".section-reparto").remove();
-       if(document.body.querySelector(".section-header3")) document.body.querySelector(".section-header3").remove(); 
+      document.body.querySelector(".section-team").remove();
+      if (document.body.querySelector(".section-header3"))
+        document.body.querySelector(".section-header3").remove();
       createDynamicBar(await allMoviesByPage(lista[0].value, null, 3));
     }
   });

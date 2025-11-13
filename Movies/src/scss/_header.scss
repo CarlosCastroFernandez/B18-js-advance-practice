@@ -3,8 +3,8 @@
 header {
   .section-header1 {
     background-color: variables.$colorFondo;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 0.625rem;
+    padding: 1.25rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -12,7 +12,7 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px;
+      gap: 1.875rem;
 
       a {
         color: variables.$colorLetra;
@@ -23,10 +23,10 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 0.625rem;
       input {
-        padding: 10px;
-        border-radius: 10px;
+        padding: 0.625rem;
+        border-radius: 0.625rem;
       }
       button {
         @include mixin.createButton(variables.$colorButton);
@@ -35,18 +35,18 @@ header {
   }
   .section-header2 {
     background-color: variables.$colorFondo2;
-    padding: 20px;
+    padding: 1.25rem;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex-direction: row-reverse;
-    select{
-        width: 300px;
-        padding: 10px;
-        border-radius: 10px;
+    select {
+      width: 18.75rem;
+      padding: 0.625rem;
+      border-radius: 0.625rem;
     }
   }
-  .section-header3 img{
-    margin-left: 30px;
+  .section-header3 img {
+    margin-left: 1.875rem;
   }
 }

@@ -28,7 +28,7 @@ function createDivImg(value, sectionMain, main) {
     "https://image.tmdb.org/t/p/w300/" + value.poster_path
   );
   img.onerror = function () {
-    this.src = "src/img/pelis-notFound.png"; 
+    this.src = "src/img/pelis-notFound.png";
   };
   divImg.appendChild(img);
   img.addEventListener("click", async (e) => {
