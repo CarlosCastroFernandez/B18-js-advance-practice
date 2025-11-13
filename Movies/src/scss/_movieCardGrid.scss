@@ -1,0 +1,49 @@
+@use "./variables";
+.section-main {
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 60px;
+  gap: 30px;
+  border-radius: 10px;
+
+  .movie-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: variables.$colorLetra;
+    width: 350px;
+
+    .movie-overview {
+      margin: 0.375rem 0 1.875rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .containerM-img {
+      width: 100%;
+      .post-movie {
+        display: block;
+        width: 100%;
+        height: 37.5rem;
+        object-fit: cover;
+        border-radius: 0.625rem;
+      }
+    }
+    .title-movie {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      display: -webkit-box;
+      white-space: wrap;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
