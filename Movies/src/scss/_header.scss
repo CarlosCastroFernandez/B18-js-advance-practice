@@ -1,0 +1,52 @@
+@use "./variables";
+@use "./mixins/mixin";
+header {
+  .section-header1 {
+    background-color: variables.$colorFondo;
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.875rem;
+
+      a {
+        color: variables.$colorLetra;
+        text-decoration: none;
+      }
+    }
+    .container-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.625rem;
+      input {
+        padding: 0.625rem;
+        border-radius: 0.625rem;
+      }
+      button {
+        @include mixin.createButton(variables.$colorButton);
+      }
+    }
+  }
+  .section-header2 {
+    background-color: variables.$colorFondo2;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    select {
+      width: 18.75rem;
+      padding: 0.625rem;
+      border-radius: 0.625rem;
+    }
+  }
+  .section-header3 img {
+    margin-left: 1.875rem;
+  }
+}

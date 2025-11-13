@@ -1,0 +1,8 @@
+@mixin createButton($color){
+    height: 40px;
+    border-radius: 10px;
+    width: 80px;
+    text-align: center;
+    font-weight: 400;
+    background-color: $color;
+}

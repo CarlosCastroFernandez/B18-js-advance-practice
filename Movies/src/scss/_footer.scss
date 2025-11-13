@@ -1,0 +1,21 @@
+@use "./variables";
+footer section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: variables.$colorFondo;
+  color: variables.$colorLetra;
+  border-radius: 0.625rem;
+  padding: 1.25rem;
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    a {
+      text-decoration: none;
+      color: variables.$colorButton;
+    }
+  }
+}
