@@ -17,7 +17,7 @@ export function createHeaderForDetails() {
   img.addEventListener("click", (e) => {
     sectionHeader.remove();
     document.body.querySelector(".section-details").remove();
-    document.body.querySelector(".section-reparto").remove();
+    document.body.querySelector(".section-team").remove();
     createDynamicBar(JSON.parse(localStorage.getItem("movies")));
   });
   return sectionHeader;
