@@ -2,17 +2,17 @@ export function createCast(cast) {
   let sectionCast = document.createElement("section");
   sectionCast.className = "section-team";
 
-  sectionCast.appendChild(createDivContainerCast(cast.cast));
-  sectionCast.appendChild(createDivContainerCast(cast.crew));
+  sectionCast.appendChild(createDivContainerCast(cast.cast,"reparto"));
+  sectionCast.appendChild(createDivContainerCast(cast.crew,"tecnico"));
 
   return sectionCast;
 }
 
-function createDivContainerCast(casts) {
+function createDivContainerCast(casts,clase) {
   let containerDivCast = document.createElement("div");
   containerDivCast.className = "container-div-cast";
   let repartoTitle = document.createElement("h2");
-  repartoTitle.textContent = "REPARTO";
+  repartoTitle.textContent = clase==="reparto"?clase.toUpperCase():"EQUIPO TÉCNICO";
   repartoTitle.style.margin = "30px";
   let containerCast = document.createElement("div");
   containerCast.className = "container-last-cast";
